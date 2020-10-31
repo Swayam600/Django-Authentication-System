@@ -22,7 +22,7 @@ def register(request):
         new_user.save()
         login(request, new_user)
 
-        return render(request, 'Register/home.html', {'message': 'You\' has been created'})
+        return redirect('/')
 
 
     else:
@@ -38,7 +38,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return render(request, 'Register/home.html', {'message': 'You\'ve successfully logged in'})
+            return redirect('/')
         else:
             return render(request, 'Register/login.html', {'warning': 'Username or Password didn\'t matched.'})
 
@@ -50,5 +50,5 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return render(request, 'Register/home.html', {'message': 'You are successfully logged out.'})
+    return redirect('/')
     
